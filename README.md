@@ -1,4 +1,20 @@
-# CIS4930 Final Project: Movie Recommender
+# Project: Machine Learning Movie Recommender
+
+## Description
+
+In this project, I built a movie recommender that takes a movie title as input and
+outputs 9 movies that are most similar to it. The user also has the option to include either a
+director name, actor name, genre, or release year along with the movie title in their search. The
+user inputs the movie title and optional filter in a graphical user interface, and the input is then
+passed to the model, which returns the output and displays it on the same interface. The model
+returns the movie titles, and on the user interface we added additional details about each movie,
+along with a poster of the movie. I used a Kaggle dataset of the top 1000 IMDB movies, and
+vectorized information about each movie in order to compare them.
+
+<div style="text-align: center;">
+  <img src="images/FilterList.png" alt="Filtered List" width="800"/>
+  <img src="images/FilteredSearch.png" alt="Filtered Search" width="800"/>
+</div>
 
 ## Repo Layout
 #### The `data` folder contains the raw data in the form of a CSV file
@@ -13,24 +29,7 @@
 - Nicegui
 - Requests
 - Pywebview
-
-## Brainstorm
-
-Use CountVectorizer on a pool of metadata, create 1000x1000 matrix with similarity scores, searches must include at least a title. If there are more paramters than title, first find similarity based on title then filter that list by additional parameter(s). We want to store the matrix in a file, so it isn't computed every execution.
-
-Plan:
-For each movie in cleaned_dataset, combine all features into one metadata string
-Use CountVectorizer to create a matrix where the columns are each movie and the rows are a word that appears at least once in metadata
-Compute Cosine Similarity scores between each movie using the previously computed matrix, storing it in a new matrix that is # movies 
-by # movies in size
-Get 9 movies that have the highest similarity scores to given movie title. 
-If there are other parameters entered in the search (genre, year, director), filter the already computed simlilar movies based on it.
--   Ex: If the information given was the title "Star Wars: A New Hope" and director "Steven Spielberg" then it would refine the number 
-       of possbile recommendations to movies that were directed by Spielberg and sort them by the similarity score with the Star Wars title.
-
-Create a GUI application that allows the user to enter criteria into a search bar, returned recommendations will include the movie poster
-  image, title, and year. Additional functionality/presentation is TBD. 
-In order to save time, the Cosine-Similarity matrix will be stored in a file and loaded upon each program execution.
+- Scikit-learn
 
 #### References
 - https://www.datacamp.com/tutorial/recommender-systems-python
